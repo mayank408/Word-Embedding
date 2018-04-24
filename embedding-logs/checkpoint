@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/mayanktripathi/Desktop/parabole-internship-test-py3/embedding-logs/images_4_classes.ckpt"
+all_model_checkpoint_paths: "/Users/mayanktripathi/Desktop/parabole-internship-test-py3/embedding-logs/images_4_classes.ckpt"

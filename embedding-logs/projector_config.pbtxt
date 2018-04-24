@@ -1,0 +1,4 @@
+embeddings {
+  tensor_name: "features:0"
+  metadata_path: "/Users/mayanktripathi/Desktop/parabole-internship-test-py3/embedding-logs/metadata_4_classes.tsv"
+}

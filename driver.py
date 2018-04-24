@@ -6,7 +6,9 @@ import numpy as np
 from matplotlib import pyplot
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
-
+from adjustText import adjust_text
+import tensorflow as tf
+from tensorflow.contrib.tensorboard.plugins import projector
 
 filename = 'GoogleNews-vectors-negative300.bin'
 
@@ -30,11 +32,11 @@ def creating_subclusters(list_of_terms, name_of_file, result, word_dict):
         try:
             res = model.word_vec(word)
             result.append(res)
-            word_dict.append((res, word))
+            word_dict.append(word)
         except:
             not_in_vocab.append(word)
 
-    pca = PCA(n_components=2)
+    pca = PCA(n_components=12)
     result = pca.fit_transform(result)    
 
     range_n_clusters = [2, 3, 5, 10, 20, 50, 100]       
@@ -55,14 +57,20 @@ def creating_subclusters(list_of_terms, name_of_file, result, word_dict):
 
     kmeans = KMeans(n_clusters=best_clusters, random_state=0).fit(result)
     pyplot.scatter(result[:, 0], result[:, 1], c=kmeans.labels_)
-    for i, word in (word_dict):
+
+    i=0
+    for word in enumerate(word_dict):
         pyplot.annotate(word, xy=(result[i, 0], result[i, 1]))
+        i=i+1
+
+    # adjust_text(word, only_move='y', arrowprops=dict(arrowstyle="->", color='r', lw=0.5))
 
     pyplot.show()
 
-
-    print("fd")
     pass
+
+
+
 
 
 # Main function
