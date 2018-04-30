@@ -31,6 +31,8 @@ img_data = np.array(img_data)
 #%%
 
 feature_vectors = np.loadtxt('feature_vectors_400_samples.txt')
+
+print(feature_vectors)
 print ("feature_vectors_shape:",feature_vectors.shape)
 print ("num of images:",feature_vectors.shape[0])
 print ("size of individual feature vector:",feature_vectors.shape[1])
@@ -40,7 +42,7 @@ num_of_samples_each_class = 100
 
 features = tf.Variable(feature_vectors, name='features')
 
-
+print(f)
 y = np.ones((num_of_samples,),dtype='int64')
 
 y[0:100]=0
@@ -69,7 +71,7 @@ for i in range(num_of_samples):
 metadata_file.close()
        
     
-# Taken from: https://github.com/tensorflow/tensorflow/issues/6322
+
 
 #%%
 with tf.Session() as sess:
